@@ -1,7 +1,7 @@
 pipeline {
     agent {
         kubernetes {
-            label 'spring-petclinic-demo'
+            label 'docker-builder'
             defaultContainer 'jnlp'
             yaml """
 apiVersion: v1
@@ -11,7 +11,7 @@ labels:
   component: ci
 spec:
   # Use service account that can deploy to all namespaces
-  serviceAccountName: cd-jenkins
+  serviceAccountName: jenkins
   containers:
   - name: maven
     image: maven:latest
